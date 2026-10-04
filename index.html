@@ -1,0 +1,150 @@
+<!doctype html>
+<html lang="cs">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+<title>Štěpán Zámostný — Web Developer · FiveM & Custom Programátor</title>
+<meta name="description" content="Štěpán Zámostný — profesionální web developer, vývojář FiveM serverů a custom programátor. Weby, FiveM servery (Krypton PvP) a scripty v JavaScriptu, C, Pythonu a Lua." />
+<meta name="author" content="Štěpán Zámostný" />
+<meta name="theme-color" content="#04080b" />
+<meta property="og:title" content="Štěpán Zámostný — Web Developer · FiveM & Custom Programátor" />
+<meta property="og:description" content="Profesionální web development, FiveM servery a custom programy na míru. JavaScript, C, Python." />
+<meta property="og:type" content="website" />
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='16' fill='%2304080b'/%3E%3Cpath d='M20 24l10 8-10 8' stroke='%232ee6c5' stroke-width='5' fill='none' stroke-linecap='round' stroke-linejoin='round'/%3E%3Cpath d='M36 40h10' stroke='%2322d3ee' stroke-width='5' stroke-linecap='round'/%3E%3C/svg%3E" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+<!-- ambient background -->
+<div class="bg" aria-hidden="true">
+  <div class="bg__grid"></div>
+  <div class="bg__orb bg__orb--a"></div>
+  <div class="bg__orb bg__orb--b"></div>
+  <div class="bg__orb bg__orb--c"></div>
+  <div class="bg__vignette"></div>
+</div>
+<div class="cursor-glow" id="cursorGlow" aria-hidden="true"></div>
+
+<!-- boot sequence -->
+<div class="boot" id="boot">
+  <div class="boot__inner">
+    <div class="boot__mark">
+      <svg viewBox="0 0 64 64" width="72" height="72" aria-hidden="true">
+        <defs>
+          <linearGradient id="bg1" x1="0" y1="0" x2="1" y2="1">
+            <stop offset="0" stop-color="#5ff3d6"/><stop offset="1" stop-color="#22d3ee"/>
+          </linearGradient>
+        </defs>
+        <rect x="2" y="2" width="60" height="60" rx="16" fill="rgba(8,26,32,.9)" stroke="rgba(56,232,199,.35)"/>
+        <path d="M20 24l10 8-10 8" stroke="url(#bg1)" stroke-width="5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M36 40h10" stroke="#22d3ee" stroke-width="5" stroke-linecap="round"/>
+      </svg>
+      <div class="boot__pulse"></div>
+    </div>
+    <div class="boot__name">Štěpán&nbsp;Zámostný</div>
+    <div class="boot__role">Web Developer <span>·</span> FiveM <span>·</span> Custom Programátor</div>
+    <div class="boot__bar"><i id="bootFill"></i></div>
+    <div class="boot__log" id="bootLog"></div>
+  </div>
+</div>
+
+<!-- top bar -->
+<header class="topbar">
+  <div class="topbar__left">
+    <span class="topbar__dot"></span>
+    <strong>Štěpán Zámostný</strong>
+    <span class="topbar__sep">/</span>
+    <span class="topbar__muted">web &amp; software developer</span>
+  </div>
+  <div class="topbar__right">
+    <span class="chip chip--live">Dostupný pro projekty</span>
+    <span class="topbar__clock" id="topClock">--:--</span>
+  </div>
+</header>
+
+<!-- desktop -->
+<main class="desktop" id="desktop">
+  <section class="hero" id="hero">
+    <p class="hero__eyebrow"><span class="hero__dot"></span> Vite na mém workspace</p>
+    <h1 class="hero__title">
+      <span class="line">Ahoj, jsem</span>
+      <span class="line grad">Štěpán Zámostný.</span>
+    </h1>
+    <p class="hero__text">
+      Profesionální <b>web developer</b>, <b>FiveM vývojář</b> a autor <b>custom programů a scriptů</b>.
+      Stavím weby, které neruší, a servery, které nelétají. Čistý kód, moderní design,
+      rychlé načtení a kód, který se dá spravovat i za dva roky.
+    </p>
+    <div class="hero__tags">
+      <span class="tag">JavaScript</span><span class="tag">C</span><span class="tag">Python</span>
+      <span class="tag">HTML / CSS</span><span class="tag">Lua · FiveM</span><span class="tag">SQL</span>
+    </div>
+    <div class="hero__actions">
+      <button class="btn btn--primary" data-open="contact">Napsat mi</button>
+      <button class="btn" data-open="services">Co dělám</button>
+      <div class="hero__hint">nebo si otevři okna na ploše →</div>
+    </div>
+  </section>
+
+  <div class="desk-icons" id="deskIcons" aria-label="Aplikace na ploše"></div>
+</main>
+
+<!-- window layer -->
+<div class="win-layer" id="winLayer"></div>
+
+<!-- taskbar -->
+<nav class="taskbar" id="taskbar">
+  <button class="start" id="startBtn" aria-label="Menu Start">
+    <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true">
+      <path d="M4 5h6v6H4zM14 5h6v6h-6zM4 13h6v6H4zM14 13h6v6h-6z" fill="currentColor" opacity=".95"/>
+    </svg>
+    <span>Start</span>
+  </button>
+  <div class="taskbar__tasks" id="taskbarTasks"></div>
+  <div class="taskbar__right">
+    <button class="iconbtn" id="soundBtn" title="Zvuky UI (S)" aria-pressed="true">
+      <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true" id="soundIcon"></svg>
+    </button>
+    <button class="iconbtn" id="closeAllBtn" title="Zavřít všechna okna">
+      <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true">
+        <path d="M6 6l12 12M18 6L6 18" stroke="currentColor" stroke-width="2" stroke-linecap="round" fill="none"/>
+      </svg>
+    </button>
+    <div class="clock" id="taskClock"><b>--:--</b><i>---</i></div>
+  </div>
+</nav>
+
+<!-- start menu -->
+<div class="startmenu" id="startMenu" hidden>
+  <div class="startmenu__panel">
+    <div class="startmenu__head">
+      <div class="avatar">ŠZ</div>
+      <div>
+        <div class="startmenu__name">Štěpán Zámostný</div>
+        <div class="startmenu__sub">Web · FiveM · Custom software</div>
+      </div>
+    </div>
+    <div class="startmenu__grid" id="startGrid"></div>
+    <div class="startmenu__foot">
+      <button class="ghostbtn" id="restartBtn">Restart systému</button>
+      <button class="ghostbtn ghostbtn--muted" id="aboutFooter">Verze 1.0 · single-page OS</button>
+    </div>
+  </div>
+</div>
+
+<div class="toasts" id="toasts" aria-live="polite"></div>
+
+<noscript>
+  <div style="padding:40px;color:#dff7f2;font-family:system-ui">
+    <h1>Štěpán Zámostný</h1>
+    <p>Web Developer · FiveM · Custom programátor. Pro plný zážitek zapni JavaScript.</p>
+    <p>Kontakt: <a style="color:#2ee6c5" href="mailto:zamostnystepan@gmail.com">zamostnystepan@gmail.com</a> · Discord: clippercze</p>
+  </div>
+</noscript>
+
+<script src="app.js"></script>
+</body>
+</html>
